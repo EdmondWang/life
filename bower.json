@@ -24,11 +24,5 @@
     "bootstrap": "~3.3.1",
     "requirejs": "~2.1.15",
     "amazeui": "~2.0.0"
-  },
-  "install": {
-    "path": {
-      "css": "src/css",
-      "js": "src/js"
-    }
   }
 }
