@@ -27,8 +27,10 @@ module.exports = function(grunt){
             packageSpecific: {
               'bootstrap': {
                 files: [
+                  'dist/js/bootstrap.js',
                   'dist/css/bootstrap.css',
-                  'dist/css/bootstrap.css.map'
+                  'dist/css/bootstrap.css.map',
+                  'dist/fonts/*'
                 ]
               }
             }
