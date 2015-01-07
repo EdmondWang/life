@@ -3,8 +3,8 @@
   require.config({
 
     paths: {
-      'jquery': ['/lib/jquery/jquery'],
-      'bootstrap': ['/lib/bootstrap/js/bootstrap'],
+      'jquery': ['/lib/jquery/dist/jquery'],
+      'bootstrap': ['/lib/bootstrap/dist/js/bootstrap'],
       'angular': ['/lib/angular/angular']
     },
 

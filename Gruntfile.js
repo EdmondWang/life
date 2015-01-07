@@ -19,9 +19,27 @@ module.exports = function(grunt){
         }
       },
 
+      bower: {
+        dev: {
+          dest: 'public/lib',
+          options: {
+            expand: true,
+            packageSpecific: {
+              'bootstrap': {
+                files: [
+                  'dist/css/bootstrap.css',
+                  'dist/css/bootstrap.css.map'
+                ]
+              }
+            }
+          }
+        }
+      },
+
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-bower');
     grunt.loadNpmTasks('grunt-debug-task');
 
     grunt.registerTask('default', ['uglify']);
