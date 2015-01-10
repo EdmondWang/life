@@ -3,22 +3,6 @@ module.exports = function(grunt){
     grunt.initConfig({
       pkg: grunt.file.readJSON('package.json'),
 
-      uglify: {
-          options: {
-              banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-          },
-          build: {
-              src: 'public/javascripts/main.js',
-              dest: 'build/main.js'
-          }
-      },
-
-      debug: {
-        options: {
-          open: true // do open node-inspector in Chrome automatically
-        }
-      },
-
       bower: {
         dev: {
           dest: 'public/lib',
@@ -38,9 +22,50 @@ module.exports = function(grunt){
         }
       },
 
+      uglify: {
+          options: {
+              banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' + '<%= grunt.template.today("yyyy-mm-dd") %> */ \n',
+              preserveComments: false // false || all || some
+          },
+          compressJS: { // custom sub task name
+            files: [{
+              expand: true,
+              src: 'public/javascripts/*.js',
+              dest: 'public/dist'
+            }]
+          }
+      },
+
+      less: {
+        development: {
+          files: {
+            'public/stylesheets/main.css': 'public/stylesheets/main.less'
+          }
+        }
+      },
+
+      watch: {
+        less: {
+          files: ['public/stylesheets/*.less'],
+          tasks: ['less'],
+          options: {
+            spawn: false,
+          },
+        },
+      },
+
+      debug: {
+        options: {
+          open: true // do open node-inspector in Chrome automatically
+        }
+      },
+
     });
 
+    // load plugins
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower');
     grunt.loadNpmTasks('grunt-debug-task');
 
