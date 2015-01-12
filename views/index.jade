@@ -4,7 +4,35 @@ block content
   div.container(ng-app='')
     div.row
       div.col-md-12
-        h1= title
+        div.page-header
+          h1 #{title}
+            small &nbsp;&nbsp;Subtext for header
+    div.row
+      div.col-md-12
+        ol.breadcrumb
+          li
+            a(href='#') Home
+          li
+            a(href='#') Library
+          li
+            a(href='#') Data
+    div.row
+      div.col-md-4
+        ul.nav.nav-pills.nav-stacked
+          li.active(role='presentation')
+            a(href='#') Home
+          li(role='presentation')
+            a(href='#') Profile
+          li(role='presentation')
+            a(href='#') Messages
+          li(role='presentation')
+            a(href='#') Contract
+      div.col-md-8
+        div.jumbotron
+          h1 Hello, world!
+          p ...
+          p
+            a.btn.btn-primary.btn-lg(href='#' role='button') Learn more
     div.row
       div.col-md-4
         p Name:
@@ -13,3 +41,4 @@ block content
         p Welcome to #{title}
         p(ng-bind='name')
         p {{name}}
+
