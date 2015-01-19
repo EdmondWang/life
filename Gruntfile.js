@@ -16,6 +16,20 @@ module.exports = function(grunt){
                   'dist/css/bootstrap.css.map',
                   'dist/fonts/*'
                 ]
+              },
+              'semantic-ui': {
+                keepExpandedHierarchy: true,
+                files: [
+                  'dist/*',
+                  'dist/themes/basic/assets/fonts/*',
+                  'dist/themes/default/assets/fonts/*',
+                  'dist/themes/default/assets/images/flags.png'
+                ]
+              },
+              'angular-route': {
+                files: [
+                  'angular-route.js'
+                ]
               }
             }
           }
