@@ -4,6 +4,7 @@
 
     paths: {
       // lib files
+      'domReady': ['/lib/requirejs-domReady/domReady'],
       'jquery': ['/lib/jquery/dist/jquery'],
       'bootstrap': ['/lib/bootstrap/dist/js/bootstrap'],
       'angular': ['/lib/angular/angular'],

@@ -8,9 +8,7 @@ define(
     'modules/profile'
   ],
   function(require, angular, angularRouter, $) {
-    'use strict';
-    $(document).ready(function(document){
-      console.log('domReady');
+    require(['domReady!'], function() {
       angular.bootstrap(document, ['profileModule']);
     });
   }
