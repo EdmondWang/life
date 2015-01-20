@@ -1,2 +1,0 @@
-/*! life 2015-01-04 */
-require.config({paths:{jquery:["/bower_components/jquery/dist/jquery.min"],bootstrap:["/bower_components/bootstrap/dist/js/bootstrap.min"]}}),require(["jquery","bootstrap"],function(a){console.log(a(".container"))});

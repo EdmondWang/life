@@ -1,0 +1,7 @@
+{
+      "source": "public/",
+      "staging": "build/staging/",
+      "process": "build/process/",
+      "finalize": "build/finalize/",
+      "output": "build/output/"
+}
