@@ -1,6 +1,8 @@
 module.exports = function(grunt){
 
     var mozjpeg = require('imagemin-mozjpeg'); // require plugin for min the *.jpeg file
+    require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt);
 
     // establish task configuration
     grunt.initConfig({
@@ -58,25 +60,21 @@ module.exports = function(grunt){
 
       clean: { // Task
         initial: { // Target
-          src: ['<%= ref.output %>', '<%= ref.finalize %>', '<%= ref.process %>', '<%= ref.staging %>']
+          src: ['<%= ref.buildDir %>']
         },
-        finalize: { // Target
-          src: ['<%= ref.finalize %>', '<%= ref.process %>', '<%= ref.staging %>']
-        }
+        staging: { // Target
+          src: ['<%= ref.staging %>']
+        },
+        process: { // Target
+          src: ['<%= ref.process %>']
+        },
+        dist: { // Target
+          src: ['<%= ref.dist %>', '<%= ref.process %>', '<%= ref.staging %>']
+        },
       },
 
       copy: { // Task
-        dev: { // Target
-          files: [{
-            expand: true,
-            src: [
-              '<%= ref.source %>' + '**/*',
-              '!<%= ref.source %>' + 'lib/**/*.min.*',
-            ],
-            dest: '<%= ref.staging %>'
-          }]
-        },
-        pro: {// Target
+        initial: { // Target
           files: [{
             expand: true,
             src: [
@@ -87,6 +85,27 @@ module.exports = function(grunt){
               '<%= ref.source %>lib/**/fonts/*',
             ],
             dest: '<%= ref.staging %>'
+          }]
+        },
+        staging: { // Target
+          files: [{
+            expand: true,
+            cwd: '<%= ref.staging %>public/lib/',
+            src: [
+              '**/*.min.*',
+              '**/fonts/*',
+            ],
+            dest: '<%= ref.process %>public/lib/'
+          }]
+        },
+        process: { // Target
+          files: [{
+            expand: true,
+            cwd: '<%= ref.process %>',
+            src: [
+              '**/*'
+            ],
+            dest: '<%= ref.dist %>'
           }]
         }
       },
@@ -103,6 +122,10 @@ module.exports = function(grunt){
           }
         },
         pro: { // Target
+          options: {
+            compress: true,
+            sourceMap: false,
+          },
           files: {
             '<%= ref.process %>public/stylesheets/main.css': '<%= ref.staging %>public/stylesheets/main.less'
           }
@@ -115,7 +138,7 @@ module.exports = function(grunt){
           curly: true, // force use brace
           eqeqeq: true,
           immed: true,
-          latedef: true,
+          latedef: true, // the variable cannot be used before declared
           newcap: true, // force using "new" before "Function"
           noarg: true, // disable arguments.caller and arguments.callee
           sub: true,
@@ -124,6 +147,7 @@ module.exports = function(grunt){
           boss: true,
           eqnull: true,
           browser: true,
+          trailing: true,
           globals: {
             jQuery: true
           },
@@ -175,6 +199,21 @@ module.exports = function(grunt){
           }
       },
 
+      qunit: { // Task
+        all: ['<%= ref.process %>public/javascripts/**/*.js']
+      },
+
+      compress: { // Task
+        process:{ // Target
+          options: {
+            archive: '<%= ref.buildDir %>dist.zip'
+          },
+          files: [
+            {expand: true, cwd: '<%= ref.process %>', src: ['**'], dest: 'build/'}, // makes all src relative to cwd
+          ]
+        }
+      },
+
       watch: { // Task
         less: { // Target
           files: ['public/stylesheets/*.less'],
@@ -195,23 +234,40 @@ module.exports = function(grunt){
 
     // load plugins
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower');
     grunt.loadNpmTasks('grunt-debug-task');
 
     //define tasks order
-    grunt.registerTask('default', ['clean, jshint, less, uglify']);
-    grunt.registerTask('copyDev', ['clean', 'copy:dev']); // there should nerver be any space
-    grunt.registerTask('copyPro', ['clean', 'copy:pro']);
-    grunt.registerTask('development', ['jshint:dev', 'less:dev']);
+    grunt.registerTask('default', [
+      'clean:initial',
+      'jshint:dev',
+      'less:dev'
+    ]);
+    grunt.registerTask('development', [
+      'jshint:dev',
+      'less:dev'
+    ]);
     grunt.registerTask('production', [
-      'clean:initial', 'copy:pro', 'jshint:pro',
-      'less:pro', 'imagemin:pro', 'uglify:pro'
-    ]);//, 'clean:finalize'
+      'clean:initial',
+      'copy:initial', // copy original static resources to staging dir
+      'jshint:pro', // check js code quality in the staging dir,
+      'uglify:pro', // compress js code
+      'less:pro', // compile and compress css, then copy them from staging dir to process dir
+      'imagemin:pro', // compress image, send to process dir
+      'copy:staging', // copy third party lib to process dir
+      'clean:staging',
+      'compress:process', // archive all files into zip
+      'copy:process',
+      'clean:process'
+    ]);
 
 };
