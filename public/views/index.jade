@@ -3,22 +3,23 @@ extends layout
 block content
   div.container
     div.row
+      div.col-md-4
+        ul.nav.nav-stacked
+          li.active(role='presentation')
+            a(href='#') Home
+          li(role='presentation')
+            a(href='#') Angular Test
+          li(role='presentation')
+            a(href='#') HTML5
+          li(role='presentation')
+            a(href='#') Contract
       div.col-md-8
         div.jumbotron
           h1 Hello, world!
           p Angular Test
           p
             a.btn.btn-primary.btn-lg(href='#' role='button') Learn more
-      div.col-md-4
-        ul.nav.nav-stacked
-          li.active(role='presentation')
-            a(href='#') Home
-          li(role='presentation')
-            a(href='#') Profile
-          li(role='presentation')
-            a(href='#') Messages
-          li(role='presentation')
-            a(href='#') Contract
+
 
 
 

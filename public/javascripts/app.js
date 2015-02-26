@@ -9,7 +9,7 @@ define(
   ],
   function(require, angular, angularRouter, $) {
     require(['domReady!'], function() {
-      angular.bootstrap(document, ['profileModule']);
+      angular.bootstrap(document, ['indexModule']);
     });
   }
 );
