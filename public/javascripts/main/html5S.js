@@ -1,5 +1,7 @@
 require.config({
 
+  baseUrl: staticBaseUrl + '/javascripts',
+
   paths: {
     // lib files
     'domReady': ['/lib/requirejs-domReady/domReady'],
@@ -32,7 +34,7 @@ require(
     'angular',
     'angular-route',
     'jquery',
-    '../modules/html5S'
+    'modules/app/html5S'
   ],
   function(require, angular, angularRouter, $) {
     require(['domReady!'], function() {

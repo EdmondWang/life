@@ -7,6 +7,8 @@ var sUserAgent = navigator.userAgent.toLowerCase(),
 
 require.config({
 
+  baseUrl: staticBaseUrl + '/javascripts',
+
   paths: {
     // lib files
     'domReady': ['/lib/requirejs-domReady/domReady'],
@@ -39,7 +41,7 @@ require(
     'angular',
     'angular-route',
     'jquery',
-    '../modules/index'
+    'modules/app/index'
   ],
   function(require, angular, angularRouter, $) {
     require(['domReady!'], function() {
