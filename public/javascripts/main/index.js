@@ -44,10 +44,7 @@ require(
     'modules/app/index'
   ],
   function(require, angular, angularRouter, $) {
-    require(['domReady!'], function() {
-      $.browser
       angular.bootstrap(document, ['indexModule']);
-    });
   }
 );
 

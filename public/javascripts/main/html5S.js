@@ -37,9 +37,7 @@ require(
     'modules/app/html5S'
   ],
   function(require, angular, angularRouter, $) {
-    require(['domReady!'], function() {
       angular.bootstrap(document, ['html5SModule']);
-    });
   }
 );
 
