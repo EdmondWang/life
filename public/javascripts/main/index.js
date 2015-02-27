@@ -1,3 +1,10 @@
+var sUserAgent = navigator.userAgent.toLowerCase(),
+  bSafari = /webkit/.test(sUserAgent),
+  bChrome = /chrome/.test(sUserAgent),
+  bOpera = /opera/.test(sUserAgent),
+  bMsie = /msie/.test(sUserAgent) && !/opera/.test(sUserAgent),
+  bMozilla = /mozilla/.test(sUserAgent) && !/(compatible|webkit)/.test(sUserAgent);
+
 require.config({
 
   paths: {
@@ -36,6 +43,7 @@ require(
   ],
   function(require, angular, angularRouter, $) {
     require(['domReady!'], function() {
+      $.browser
       angular.bootstrap(document, ['indexModule']);
     });
   }
