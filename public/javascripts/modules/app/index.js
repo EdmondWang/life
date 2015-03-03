@@ -16,7 +16,10 @@ define(
       when('/news', {
         templateUrl: 'partials/news.jade',
         controller: 'newsCtrl'
-      })
+      }).
+      otherwise({
+        redirectTo: '/news'
+      });
     }]);
     return oIndexModule;
   }
