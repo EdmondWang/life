@@ -1,10 +1,23 @@
 define(
   [
     'angular',
-    'controllers/index'
+    'angular-route',
+    'controllers/news',
+    'controllers/snake'
   ],
   function (angular) {
-    var oIndexModule = angular.module('indexModule', ['controller'], angular.noop);
+    var oIndexModule = angular.module('indexModule', ['controller', 'ngRoute'], angular.noop);
+    oIndexModule.config(['$routeProvider', function($routeProvider) {
+      $routeProvider.
+      when('/snake', {
+        templateUrl: 'partials/snake.jade',
+        controller: 'snakeCtrl'
+      }).
+      when('/news', {
+        templateUrl: 'partials/news.jade',
+        controller: 'newsCtrl'
+      })
+    }]);
     return oIndexModule;
   }
 );

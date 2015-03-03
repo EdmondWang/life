@@ -1,24 +1,21 @@
 extends layout
 
 block content
-  div.container(ng-controller='indexCtrl')
-    div.row
-      div.col-md-4
-        ul.nav.nav-stacked
-          li.active(role='presentation')
-            a(href='#') Home
-          li(role='presentation')
-            a(href='#') Angular Test
-          li(role='presentation')
-            a(href='#') HTML5
-          li(role='presentation')
-            a(href='#') Contract
-      div.col-md-8
-        div.jumbotron
-          h1 Hello, world!
-          p Angular Test
-          p
-            a.btn.btn-primary.btn-lg(href='#' role='button') Learn more
+  div.view-container()
+    div.view-frame
+      div.container
+        div.row
+          div.col-md-4
+            ul.nav.nav-stacked
+              li.active(role='presentation')
+                a(href='#/news') News
+              li(role='presentation')
+                a(href='#') Angular Test
+              li(role='presentation')
+                a(href='#/snake') Snake
+              li(role='presentation')
+                a(href='#') Contract
+          div.col-md-8(ng-view)
   script(data-main='/javascripts/main/index' src='/lib/requirejs/require.js' defer async='true')
 
 
