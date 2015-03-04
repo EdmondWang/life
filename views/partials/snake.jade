@@ -1,28 +1,131 @@
 div.view-frame(ng-controller='snakeCtrl')
-  canvas#can(width='400' height='400' class='snake-canvas')
+  canvas#can.snake-canvas(width='400'  height='400')
+  button.btn.btn-lg.btn-primary.btn-block(type='button' onclick='start()') Start
 script(type='text/javascript').
-  var sn=[42,41],
-      dz=43,
-      fx=1,
-      n,
-      ctx=document.getElementById("can").getContext("2d");
+    /*
+      * Constant
+      */
+      var LEFT = -1,
+        RIGHT = 1,
+        UP = -20,
+        DOWN = 20,
+        PAUSE = 80;
 
-  function draw(t,c){
-    ctx.fillStyle=c;
-    ctx.fillRect(t%20*20+1,~~(t/20)*20+1,18,18);
-  }
+      var oContext = document.getElementById('can').getContext('2d'),
+        snake = [42, 41],
+        iDirection = RIGHT,
+        iNext = null,
+        iFood = ~~(Math.random() * 400),
+        fnTimer = null,
+        bPause = false,
+        bIsPlaying = false;
+      document.onkeydown = keydown;
 
-  document.onkeydown=function(e){
-      fx=sn[1]-sn[0]==(n=[-1,-20,1,20][(e||event).keyCode-37]||fx)?fx:n
-  };
-  !function(){
-    sn.unshift(n=sn[0]+fx);
-    if(sn.indexOf(n,1)>0 || n<0||n>399||fx==1&&n%20==0||fx==-1&&n%20==19) return; // return alert("GAME OVER");
-    draw(n,"Lime");
-    if(n==dz){
-      while(sn.indexOf(dz=~~(Math.random()*400))>=0);
-      draw(dz,"Yellow");
-    }else
-      draw(sn.pop(),"Black");
-    setTimeout(arguments.callee,130);
-  }();
+      /*
+      * keydown
+      * pause: keyCode is 80.
+      * left arrow: keyCode is 37.
+      * up arrow: keyCode is 38.
+      * right arrow: keyCode is 39.
+      * down arrow: keyCode is 40.
+      * anonymous direction array is [-1, -20, 1, 20]
+      */
+      function keydown(e) {
+        if (e.keyCode == PAUSE) {
+          togglePause();
+        }
+        var curDirection = snake[0] - snake[1];
+        iDirection = Number([LEFT, UP, RIGHT, DOWN][e.keyCode - 37]);
+        if (iDirection == -curDirection) {
+          iDirection = curDirection;
+        }
+      }
+
+      /*
+      * draw rectangle according to the iCoordinate
+      * iCoord: the order of the rectangle
+      * sStyle: css color style
+      */
+      function drawRec(iCoord, sStyle) {
+        oContext.fillStyle = sStyle;
+        oContext.fillRect((iCoord % 20) * 20 + 1, ~~ (iCoord / 20) * 20 + 1, 18, 18);
+      }
+
+      /*
+      * Clear canvas via fill in the black rectangle
+      */
+      function clearCanvas() {
+        oContext.fillStyle='gray';
+        oContext.fillRect(0, 0,400,400);
+      }
+
+      /*
+      * Detect if there occurs the collision
+      */
+      function isCollision(iPos) {
+          var bBorder = (iPos % 20 == 0 && iDirection == RIGHT)
+            || (iPos % 20 == 19 && iDirection == LEFT)
+            || (iPos < 0 || iPos > 399),
+          bSelf = snake.indexOf(iPos) >= 0;
+        return bBorder || bSelf;
+      }
+
+      function togglePause() {
+        bPause = !bPause;
+        if (bPause) {
+          bIsPlaying = false;
+        }
+      }
+
+      /*
+      * Reset the parameters of the game
+      */
+      function reset() {
+        bIsPlaying = false;
+        bPause = false;
+        snake = [42, 41];
+        iDirection = RIGHT;
+        iNext = null;
+        iFood = ~~(Math.random() * 400);
+        clearInterval(fnTimer);
+        fnTimer = null;
+      }
+
+      /*
+      * start the game
+      */
+      function start() {
+        if (bIsPlaying) {
+          return;
+        }
+        bIsPlaying = true;
+        clearCanvas();
+        drawRec(iFood, 'Yellow');
+        snake.forEach(function(iPos, index) {
+          drawRec(iPos, 'Lime');
+        });
+        fnTimer = setInterval(play, 195);
+      }
+
+      function play() {
+        iNext = snake[0] + parseInt(iDirection);
+        if (isCollision(iNext)) {
+          reset();
+          clearCanvas();
+          oContext.fillStyle='White';
+          oContext.font='20px Arial';
+          oContext.fillText('Oops! Game Over ^.^', 50, 50);
+          return;
+        }
+        snake.unshift(iNext);
+        drawRec(iNext, 'Lime');
+
+        if (iNext == iFood) {
+          do {
+            iFood = (~~(Math.random() * 400))
+          } while(snake.indexOf(iFood) >= 0)
+          drawRec(iFood, 'Yellow');
+        } else {
+          drawRec(snake.pop(), 'gray');
+        }
+      }
