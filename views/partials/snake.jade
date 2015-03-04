@@ -1,6 +1,10 @@
 div.view-frame(ng-controller='snakeCtrl')
-  canvas#can.snake-canvas(width='400'  height='400')
-  button.btn.btn-lg.btn-primary.btn-block(type='button' onclick='start()') Start
+  h1 Gluttonous Snake
+  div.row
+    div.col-md-10
+      canvas#can.snake-canvas(width='400'  height='400')
+    div.col-md-2
+      button.btn.btn-lg.btn-primary.btn-block(type='button' onclick='start()') Start
 script(type='text/javascript').
     /*
       * Constant

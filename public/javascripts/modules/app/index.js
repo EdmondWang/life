@@ -3,7 +3,8 @@ define(
     'angular',
     'angular-route',
     'controllers/news',
-    'controllers/snake'
+    'controllers/snake',
+    'controllers/placeholder'
   ],
   function (angular) {
     var oIndexModule = angular.module('indexModule', ['controller', 'ngRoute'], angular.noop);
@@ -15,6 +16,10 @@ define(
       }).
       when('/news', {
         templateUrl: 'partials/news.jade',
+        controller: 'newsCtrl'
+      }).
+      when('/placeholder', {
+        templateUrl: 'partials/placeholder.jade',
         controller: 'newsCtrl'
       }).
       otherwise({
