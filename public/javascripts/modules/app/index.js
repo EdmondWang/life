@@ -2,6 +2,7 @@ define(
   [
     'angular',
     'angular-route',
+    'jquery',
     'controllers/news',
     'controllers/snake',
     'controllers/placeholder'
