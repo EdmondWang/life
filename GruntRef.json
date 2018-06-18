@@ -1,7 +1,0 @@
-{
-      "source": "public/",
-      "buildDir": "build/",
-      "staging": "build/staging/",
-      "process": "build/process/",
-      "dist": "build/dist/"
-}
