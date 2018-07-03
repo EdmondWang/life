@@ -33,7 +33,16 @@
           }, {
             "name": "Spring Framework",
             "children": [{
-              "name": "Controller"
+              "name": "Controller",
+              "children": [{
+                "name": "RequestMapping"
+              }, {
+                "name": "RequestParameter"
+              }, {
+                "name": "RequestBody"
+              }, {
+                "name": "ResponseBody"
+              }]
             }, {
               "name": "DI"
             }, {
@@ -178,6 +187,8 @@
                 "children": [{
                   "name": "jQuery"
                 }, {
+                  "name": "DOJO"
+                }, {
                   "name": "MV* framework",
                   "children": [{
                     "name": "Angular JS"
@@ -185,6 +196,15 @@
                     "name": "React JS"
                   }, {
                     "name": "Vue JS"
+                  }]
+                }, {
+                  "name": "Diagram framework",
+                  "children": [{
+                    "name": "Chart JS"
+                  }, {
+                    "name": "D3 JS"
+                  }, {
+                    "name": "VIS JS"
                   }]
                 }]
               }
@@ -248,8 +268,8 @@
       bottom: 30,
       left: 90
     },
-    width = 1200 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+    width = 1400 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
   // appends a 'group' element to 'svg'
