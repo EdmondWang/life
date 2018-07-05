@@ -113,7 +113,7 @@
               },
               {
                 "name": "Color",
-                "children": [, {"name": "RGBA"}, {"name": "HSLA"}]
+                "children": [{"name": "RGBA"}, {"name": "HSLA"}]
               }, {
                 "name": "CSS BOX"
               },
