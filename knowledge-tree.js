@@ -277,7 +277,7 @@
             ]
           },
           {
-            "name": "HTTP Protocol",
+            "name": "HTTP 1.1",
             "children": [{
                 "name": "GET & POST"
               },
