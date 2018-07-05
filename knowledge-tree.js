@@ -108,21 +108,27 @@
             "children": [
               {
                 "name": "Font",
-                "children": ["PX", "EM", "REM"]
+                "children": [
+			{"name": "PX"}, {"name": "EM"}, {"name": "REM"}]
               },
               {
                 "name": "Color",
-                "children": ["RGBA", "HSLA"]
+                "children": [, {"name": "RGBA"}, , {"name": "HSLA"}]
               }, {
                 "name": "CSS BOX"
               },
               {
                 "name": "Layout",
                 "children": [
-                  "Float",
-                  "Table",
-                  "Flex",
-                  "Grid"
+                 {
+                  "name":  "Float",
+		 },{
+                  "name": "Table"
+		 },{
+                  "name": "Flex"
+		 },{
+                  "name": "Grid"
+		 }
                 ]
               },
               {
@@ -176,31 +182,31 @@
               {
                 "name": "Array",
                "children": [
-                  "copyWithin",
-                  "concat",
-                  "entries",
-                  "every",
-                  "fill",
-                  "filter",
-                  "find",
-                  "findIndex",
-                  "forEach",
-                  "indexOf",
-                  "join",
-                  "keys",
-                  "map",
-                  "of",
-                  "pop",
-                  "push",
-                  "reduce",
-                  "reverse",
-                  "shift",
-                  "slice",
-                  "splice",
-                  "some",
-                  "sort",
-                  "unshift",
-                  "values"
+                  {"name": "copyWithin"},
+                  {"name": "concat"},
+                  {"name": "entries"},
+                  {"name": "every"},
+                  {"name": "fill"},
+                  {"name": "filter"},
+                  {"name": "find"},
+                  {"name": "findIndex"},
+                  {"name": "forEach"},
+                  {"name": "indexOf"},
+                  {"name": "join"},
+                  {"name": "keys"},
+                  {"name": "map"},
+                  {"name": "of"},
+                  {"name": "pop"},
+                  {"name": "push"},
+                  {"name": "reduce"},
+                  {"name": "reverse"},
+                  {"name": "shift"},
+                  {"name": "slice"},
+                  {"name": "splice"},
+                  {"name": "some"},
+                  {"name": "sort"},
+                  {"name": "unshift"},
+                  {"name": "values"}
                 ]
               },
               {
@@ -229,11 +235,17 @@
               },
               {
                 "name": "DOM",
-                "children": [{
+                "children": [
+		{
+			"name": "Node Type"
+		},{
+			"name": "Node Modification",
+			"children": [{
                   "name": "Append"
                 }, {
                   "name": "InsertBefore"
                 }]
+		} ]
               },
               {
                 "name": "Third Party Library",
