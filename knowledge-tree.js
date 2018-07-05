@@ -34,6 +34,8 @@
               "name": "Directive"
             }, {
               "name": "Action"
+            }, {
+              "name": "Custom Tag"
             }]
           }, {
             "name": "Servlet"
