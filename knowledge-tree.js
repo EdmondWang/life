@@ -105,13 +105,25 @@
           },
           {
             "name": "CSS Stylesheet",
-            "children": [{
-                "name": "Color"
+            "children": [
+              {
+                "name": "Font",
+                "children": ["PX", "EM", "REM"]
+              },
+              {
+                "name": "Color",
+                "children": ["RGBA", "HSLA"]
               }, {
                 "name": "CSS BOX"
               },
               {
-                "name": "Layout"
+                "name": "Layout",
+                "children": [
+                  "Float",
+                  "Table",
+                  "Flex",
+                  "Grid"
+                ]
               },
               {
                 "name": "Position",
@@ -163,13 +175,33 @@
               },
               {
                 "name": "Array",
-                "children": [{
-                  "name": "forEach"
-                }, {
-                  "name": "push"
-                }, {
-                  "name": "pop"
-                }]
+               "children": [
+                  "copyWithin",
+                  "concat",
+                  "entries",
+                  "every",
+                  "fill",
+                  "filter",
+                  "find",
+                  "findIndex",
+                  "forEach",
+                  "indexOf",
+                  "join",
+                  "keys",
+                  "map",
+                  "of",
+                  "pop",
+                  "push",
+                  "reduce",
+                  "reverse",
+                  "shift",
+                  "slice",
+                  "splice",
+                  "some",
+                  "sort",
+                  "unshift",
+                  "values"
+                ]
               },
               {
                 "name": "Function"
@@ -186,6 +218,12 @@
               {
                 "name": "Scope Chain"
               },
+              {
+				        "name": "Prototype Chain"
+			        },
+              {
+				        "name": "Closure"
+			        },
               {
                 "name": "Event"
               },
