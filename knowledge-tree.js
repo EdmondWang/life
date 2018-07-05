@@ -23,6 +23,19 @@
           "children": [{
             "name": "Tomcat"
           }, {
+            "name": "JSP",
+            "children": [{
+              "name": "Life Cycle"
+            }, {
+              "name": "Scripting Element"
+            }, {
+              "name": "9 Implicit Objects"
+            }, {
+              "name": "Directive"
+            }, {
+              "name": "Action"
+            }]
+          }, {
             "name": "Servlet"
           }, {
             "name": "Filter"
