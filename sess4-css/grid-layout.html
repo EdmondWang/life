@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    .grid {
+  width: 100%;
+  display: grid;
+}
+
+.px {
+  grid-template-columns: 200px 200px 200px;
+}
+
+.fr-333 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.fr-211 {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.fr-200px-21 {
+  grid-template-columns: 200px 2fr 1fr;
+}
+.fr-200px-repeat61-200px {
+  grid-template-columns: 200px repeat(4, 1fr) 200px;
+}
+
+.fr-repeat-512 {
+  grid-template-columns: repeat(5, 1fr 2fr);
+}
+
+.box {
+  padding: 0.5rem;
+  border-box: border-box;
+  border: 1px solid #fb5;
+  background: #f85;
+}
+  </style>
+</head>
+<body>
+  <div>
+    <h1>Hello Grid</h1>
+    <div class="grid px">
+      <div class="box">200 px</div>
+      <div class="box">200 px</div>
+      <div class="box">200 px</div>
+      <div class="box">200 px</div>
+      <div class="box">200 px</div>
+      <div class="box">200 pxx</div>
+    </div>
+    <h1>1/3 FR</h1>
+    <div class="grid fr-333">
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+    </div>
+    <h1>2 + 1 + 1 FR</h1>
+    <div class="grid fr-211">
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+    </div>
+    <h1>200px + 2 + 1 FR</h1>
+    <div class="grid fr-200px-21">
+      <div class="box">200px</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">200px</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+    </div>
+    <h1>200px + repeat(4, 1 FR ) + 200px</h1>
+    <div class="grid fr-200px-repeat61-200px">
+      <div class="box">200px</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">200px</div>
+    </div>
+    <h1>repeat(5, 1 FR 2 FR)</h1>
+    <div class="grid fr-repeat-512">
+      <div class="box">1 fr</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">2 fr</div>
+      <div class="box">1 fr</div>
+      <div class="box">2 fr</div>
+    </div>
+  </div>
+</body>
+</html>
+
+</style>
