@@ -1,0 +1,83 @@
+/* <Reboot CSS */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+/* Reboot CSS> */
+
+.grid {
+  display: grid;
+  grid-template-columns: 200px 2fr 2fr 1fr;
+  grid-template-rows: 100px 1fr 200px;
+  grid-gap: 10px 20px;
+  min-height: 600px;
+}
+
+.grid-item {
+  background-color: #FAFAFA;
+  color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+}
+
+.grid-header {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 1;
+}
+
+header {
+  background-color: #008CE6;
+  height: 100%;
+}
+
+.mainmenu {
+  
+}
+
+.mainmenu ul {
+  
+}
+
+.mainmenu ul li {
+  display: inline-block;
+}
+
+.sidemenu {
+  min-height: 300px;
+  background-color: #AAAAAA;
+}
+
+.section {
+  width: 90%;
+  min-height: 700px;
+  background-color: #00BDF2;
+  margin: auto;
+}
+
+.grid-footer {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+
+footer {
+  background-color: #333333;
+  min-height: 200px;
+}
