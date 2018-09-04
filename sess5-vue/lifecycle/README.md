@@ -14,3 +14,10 @@ Init Life Cycle
 > vm.$children = [];
 
 > vm.$refs = {};
+
+Init Event and init parent attached events
+
+> vm._events = Object.create(null);
+
+
+
