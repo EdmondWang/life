@@ -27,7 +27,7 @@ Init Render
 
 > resolveSlots
 
-## beforeCreate()
+**beforeCreate()**
 
 initInjections(vm);
 
@@ -35,7 +35,7 @@ initState(vm);
 
 initProvide(vm);
 
-## created();
+**created()**
 
 
 
