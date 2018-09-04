@@ -29,5 +29,16 @@ Init Render
 
 ## beforeCreate()
 
+initInjections(vm);
+
+initState(vm);
+
+initProvide(vm);
+
+## created();
+
+
+
+
 
 
