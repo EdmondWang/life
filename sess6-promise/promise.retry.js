@@ -29,6 +29,8 @@ function fetchData() {
     }, 500);
   });
 };
+
+
 Promise.retry(fetchData, 3, 100).catch(function(err) {
   console.log('cannot fetch data now');
 });;
